@@ -1,0 +1,13 @@
+current directory: /Users/yoshitaka/Desktop/runteq/phase_RSpec/sample_app_for_rspec-1/vendor/bundle/ruby/2.6.0/gems/json-2.2.0/ext/json
+/Users/yoshitaka/.rbenv/versions/2.6.4/bin/ruby -I /Users/yoshitaka/.rbenv/versions/2.6.4/lib/ruby/2.6.0 -r ./siteconf20210415-67471-1pu2pb.rb extconf.rb
+creating Makefile
+
+current directory: /Users/yoshitaka/Desktop/runteq/phase_RSpec/sample_app_for_rspec-1/vendor/bundle/ruby/2.6.0/gems/json-2.2.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/yoshitaka/Desktop/runteq/phase_RSpec/sample_app_for_rspec-1/vendor/bundle/ruby/2.6.0/gems/json-2.2.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/yoshitaka/Desktop/runteq/phase_RSpec/sample_app_for_rspec-1/vendor/bundle/ruby/2.6.0/gems/json-2.2.0/ext/json
+make "DESTDIR=" install

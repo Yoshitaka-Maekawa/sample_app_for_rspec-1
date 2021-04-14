@@ -1,0 +1,15 @@
+current directory: /Users/yoshitaka/Desktop/runteq/phase_RSpec/sample_app_for_rspec-1/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/yoshitaka/.rbenv/versions/2.6.4/bin/ruby -I /Users/yoshitaka/.rbenv/versions/2.6.4/lib/ruby/2.6.0 -r ./siteconf20210415-67471-jd1g08.rb extconf.rb
+creating Makefile
+
+current directory: /Users/yoshitaka/Desktop/runteq/phase_RSpec/sample_app_for_rspec-1/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/yoshitaka/Desktop/runteq/phase_RSpec/sample_app_for_rspec-1/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/yoshitaka/Desktop/runteq/phase_RSpec/sample_app_for_rspec-1/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20210415-67471-1dt0xct/skiptrace/internal
