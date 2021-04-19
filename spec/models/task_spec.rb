@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
-  let(:user) { create(:user) }
-
   context 'タスクのタイトルが存在しない場合' do
     before do
-      @task_without_title = user.tasks.create(title: nil, status: 0)
+      @task_without_title = build(:task, title: "")
     end
 
     it 'バリデーションエラーが発生する' do
@@ -20,8 +18,8 @@ RSpec.describe Task, type: :model do
 
   context 'タスクのタイトルが重複している場合' do
     before do
-      user.tasks.create(title: 'テストタスク', status: 0)
-      @task_with_duplicated_title = user.tasks.build(title: 'テストタスク', status: 1)
+      task = create(:task)
+      @task_with_duplicated_title = build(:task, title: task.title)
     end
 
     it 'バリデーションエラーが発生する' do
@@ -36,7 +34,7 @@ RSpec.describe Task, type: :model do
 
   context 'タスクの状態が存在しない場合' do
     before do
-      @task_without_status = user.tasks.create(title:'テストタスク', status: nil)
+      @task_without_status = build(:task, status: nil)
     end
 
     it 'バリデーションエラーが発生する' do
