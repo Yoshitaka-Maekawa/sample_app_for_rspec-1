@@ -8,10 +8,6 @@ RSpec.describe Task, type: :model do
 
     it 'バリデーションエラーが発生する' do
       expect(@task_without_title).to be_invalid
-    end
-
-    it 'エラーメッセージを返す' do
-      @task.valid?
       expect(@task_without_title.errors[:title]).to include("can't be blank")
     end
   end
@@ -24,10 +20,6 @@ RSpec.describe Task, type: :model do
 
     it 'バリデーションエラーが発生する' do
       expect(@task_with_duplicated_title).to be_invalid
-    end
-
-    it 'エラーメッセージを返す' do
-      @task_with_duplicated_title.valid?
       expect(@task_with_duplicated_title.errors[:title]).to include("has already been taken")
     end
   end
@@ -39,10 +31,6 @@ RSpec.describe Task, type: :model do
 
     it 'バリデーションエラーが発生する' do
       expect(@task_without_status).to be_invalid
-    end
-
-    it 'エラーメッセージを返す' do
-      @task.valid?
       expect(@task_without_status.errors[:status]).to include("can't be blank")
     end
   end
