@@ -20,7 +20,7 @@ RSpec.describe Task, type: :model do
 
   context 'タスクのタイトルが重複している場合' do
     before do
-      task1 = user.tasks.create(title: 'テストタスク', status: 0)
+      user.tasks.create(title: 'テストタスク', status: 0)
       @task2 = user.tasks.build(title: 'テストタスク', status: 1)
     end
 
