@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
+  it '全ての属性が有効である' do
+    task = build(:task)
+    expect(task).to be_valid
+    expect(task.errors).to be_empty
+  end
+
   context 'タスクのタイトルが存在しない場合' do
     before do
       @task_without_title = build(:task, title: "")
