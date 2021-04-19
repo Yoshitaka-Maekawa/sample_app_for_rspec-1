@@ -30,6 +30,18 @@ RSpec.describe Task, type: :model do
     end
   end
 
+  context 'タスクのタイトルが重複してない場合' do
+    before do
+      task = create(:task)
+      @task_with_another_title = build(:task, title: "another_title")
+    end
+
+    it 'バリデーションエラーが発生する' do
+      expect(@task_with_another_title).to be_valid
+      expect(@task_with_another_title.errors[:title]).to be_empty
+    end
+  end
+
   context 'タスクの状態が存在しない場合' do
     before do
       @task_without_status = build(:task, status: nil)
