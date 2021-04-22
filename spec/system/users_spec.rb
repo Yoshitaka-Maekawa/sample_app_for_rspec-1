@@ -42,18 +42,20 @@ RSpec.describe "Users", type: :system do
 
       context '登録済のメールアドレスを使用' do
         before do
-          another_user = create(:user)
+          @existed_user = create(:user)
 
-          fill_in "Email", with: another_user.email
+          fill_in "Email", with: @existed_user.email
           fill_in "Password", with: user.password
           fill_in "Password confirmation", with: user.password_confirmation
           click_button "SignUp"
         end
 
-        it 'ユーザーの新規作成が失敗する' do
+        it 'ユーザーの新規作成が失敗する', focus: true do
           expect(current_path).to eq users_path
           expect(page).to have_content "SignUp"
-          expect(page).to have_content "has already been taken"
+          expect(page).to have_content '1 error prohibited this user from being saved'
+          expect(page).to have_content 'Email has already been taken'
+          expect(page).to have_field 'Email', with: @existed_user.email
         end
       end
     end
