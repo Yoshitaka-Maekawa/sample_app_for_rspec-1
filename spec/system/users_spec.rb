@@ -131,7 +131,8 @@ RSpec.describe "Users", type: :system do
         it 'ユーザーの編集が失敗する' do
           expect(current_path).to eq user_path(1)
           expect(page).to have_content "Editing User"
-          expect(page).to have_content "has already been taken"
+          expect(page).to have_content('1 error prohibited this user from being saved')
+          expect(page).to have_content('Email has already been taken')
         end
       end
 
