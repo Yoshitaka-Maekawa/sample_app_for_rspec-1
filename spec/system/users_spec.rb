@@ -149,5 +149,22 @@ RSpec.describe "Users", type: :system do
         end
       end
     end
+
+    describe 'マイページ' do
+      context 'タスクを作成' do
+        before do
+          create_task(task)
+        end
+
+        it '新規作成したタスクが表示される' do
+          visit user_path(task.user)
+          expect(page).to have_content('test_title')
+          expect(page).to have_content('doing')
+          expect(page).to have_link('Show')
+          expect(page).to have_link('Edit')
+          expect(page).to have_link('Destroy')
+        end
+      end
+    end
   end
 end
