@@ -31,6 +31,7 @@ RSpec.describe "Tasks", type: :system do
         end
       end
     end
+  end
 
   describe 'ログイン後' do
     before do
@@ -63,11 +64,11 @@ RSpec.describe "Tasks", type: :system do
     describe 'タスク編集' do
       before do
         create_task(task)
+        click_link "Edit"
       end
 
       context 'フォームの入力値が正常' do
         before do
-          click_link "Edit"
           fill_in "Title", with: task.title
           fill_in "Content", with: task.content
           select task.status, from: "Status"
@@ -81,6 +82,17 @@ RSpec.describe "Tasks", type: :system do
           expect(page).to have_content "Content: #{task.content}"
           expect(page).to have_content "Status: #{task.status}"
           expect(page).to have_content "Task was successfully updated."
+        end
+      end
+
+      context 'タイトルが未入力' do
+        it 'タスクの編集が失敗する' do
+          fill_in 'Title', with: nil
+          select :todo, from: 'Status'
+          click_button 'Update Task'
+          expect(page).to have_content '1 error prohibited this task from being saved'
+          expect(page).to have_content "Title can't be blank"
+          expect(current_path).to eq task_path(1)
         end
       end
 
