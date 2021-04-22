@@ -96,6 +96,18 @@ RSpec.describe "Tasks", type: :system do
         end
       end
 
+      context '登録済のタイトルを入力' do
+        it 'タスクの編集が失敗する' do
+          other_task = create(:task)
+          fill_in 'Title', with: other_task.title
+          select :todo, from: 'Status'
+          click_button 'Update Task'
+          expect(page).to have_content '1 error prohibited this task from being saved'
+          expect(page).to have_content "Title has already been taken"
+          expect(current_path).to eq task_path(1)
+        end
+      end
+
       context '他ユーザーのタスクの編集ページにアクセス' do
         before do
           @another_user = create(:user)
