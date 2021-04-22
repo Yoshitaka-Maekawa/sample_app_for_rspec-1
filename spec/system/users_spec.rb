@@ -35,7 +35,8 @@ RSpec.describe "Users", type: :system do
         it 'ユーザーの新規作成が失敗する' do
           expect(current_path).to eq users_path
           expect(page).to have_content "SignUp"
-          expect(page).to have_content "can't be blank"
+          expect(page).to have_content '1 error prohibited this user from being saved'
+          expect(page).to have_content "Email can't be blank"
         end
       end
 
