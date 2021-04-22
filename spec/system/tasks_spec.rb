@@ -31,7 +31,6 @@ RSpec.describe "Tasks", type: :system do
         end
       end
     end
-  end
 
   describe 'ログイン後' do
     before do
@@ -42,7 +41,12 @@ RSpec.describe "Tasks", type: :system do
     describe 'タスク作成' do
       context 'フォームの入力値が正常' do
         before do
-          create_task(task)
+          click_link "New task"
+          fill_in "Title", with: task.title
+          fill_in "Content", with: task.content
+          select task.status, from: "Status"
+          fill_in "Deadline", with: DateTime.new(2020, 6, 1, 10, 30)
+          click_button "Create Task"
         end
 
         it '新規作成したタスクが表示される' do
@@ -50,6 +54,7 @@ RSpec.describe "Tasks", type: :system do
           expect(page).to have_content "Title: #{task.title}"
           expect(page).to have_content "Content: #{task.content}"
           expect(page).to have_content "Status: #{task.status}"
+          expect(page).to have_content 'Deadline: 2020/6/1 10:30'
           expect(page).to have_content "Task was successfully created."
         end
       end
